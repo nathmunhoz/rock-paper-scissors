@@ -4,6 +4,7 @@ let computerScore = 0;
 const resultsDiv = document.getElementById('results');
 const scoreDiv = document.getElementById('score');
 const winnerDiv = document.getElementById('winner');
+const resetButton = document.getElementById('reset');
 
 function getComputerChoice(){
     let x = Math.random();
@@ -37,24 +38,22 @@ function playGame(humanChoice) {
     const computerChoice = getComputerChoice();
     const result = playRound(humanChoice, computerChoice);
 
-    let message = `you chose ${humanChoice}, computer chose ${computerChoice}. `;
+    let message = `You chose ${humanChoice}, Computer chose ${computerChoice}.\n`;
 
     if (result === 1){
-        message += 'it\'s a draw!';
+        message += 'It\'s a draw!';
     };
     if (result === 2){
         computerScore ++;
-        message += 'computer wins this round!';
+        message += 'Computer wins this round!';
     };
     if (result === 3){
         humanScore ++;
-        message += 'you win this round!';
+        message += 'You win this round!';
     };
 
-    scoreDiv.textContent = `computer score: ${computerScore} \nhuman score: ${humanScore}`;
-
     resultsDiv.textContent = message;
-
+    scoreDiv.textContent = `Computer score: ${computerScore} | Human score: ${humanScore}`;
     checkWinner();
 };
 
@@ -72,9 +71,23 @@ function checkWinner() {
         document.getElementById('rock').disabled = true;
         document.getElementById('paper').disabled = true;
         document.getElementById('scissors').disabled = true;
+        resetButton.style.display = 'block';
     };
 };
+
+function reset(){
+    humanScore = 0;
+    computerScore = 0;
+    resultsDiv.textContent = '';
+    winnerDiv.textContent = '';
+    document.querySelectorAll('.buttons button').forEach(btn => btn.disabled = false);
+    resetButton.style.display = 'none';
+}
 
 document.getElementById('rock').addEventListener('click', () => playGame('rock'));
 document.getElementById('paper').addEventListener('click', () => playGame('paper'));
 document.getElementById('scissors').addEventListener('click', () => playGame('scissors'));
+resetButton.addEventListener('click', reset);
+// Hide reset button at the start
+resetButton.style.display = 'none';
+scoreDiv.textContent = `Computer score: ${computerScore} | Human score: ${humanScore}`;

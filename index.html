@@ -3,29 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Rock Paper Scissors</h1>
+    <div class="container">
+        <h1>Rock Paper Scissors</h1>
 
-    <div>
-        <button id="rock">Rock</button>
-        <button id="paper">Paper</button>
-        <button id="scissors">Scissors</button>
+        <div class="buttons">
+            <button id="rock">🪨 Rock</button>
+            <button id="paper">📄 Paper</button>
+            <button id="scissors">✂️ Scissors</button>
+        </div>
+
+        <hr />
+
+        <div class="results-container">
+            <h3>Results:</h3>
+            <div id="results"></div>
+        
+            <h3>Score:</h3>
+            <div id="score"></div>
+        
+            <h3>Winner:</h3>
+            <div id="winner"></div>
+        </div>
+        <button id="reset" class="reset-btn">Play Again</button>
     </div>
-
-    <hr>
-
-    <h3>Results:</h3>
-    <div id="results"></div>
-    <br>
-    <h3>Score:</h3>
-    <div id="score"></div>
-    <br>
-    <h3>Winner:</h3>
-    <div id="winner"></div>
-
     <script src="javascript.js"></script>
 
 </body>
